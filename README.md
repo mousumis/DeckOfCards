@@ -17,7 +17,7 @@ A `pom.xml` configuration has been provided to build this project in maven:
 ```
 mvn clean package
 ```
-Artifacts will be generated in the `target` folder
+Artifacts will be generated in the `target` folder. Pre-built jars are available in the `artifacts` folder
 
 ## Unit Tests
 Unit tests are written using JUnit 4 and can be run using maven:
