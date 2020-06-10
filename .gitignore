@@ -1,0 +1,13 @@
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+
+# Compiled source #
+###################
+target/
+
+# IDE Generated files #
+#######################
+.idea
+*.iml
