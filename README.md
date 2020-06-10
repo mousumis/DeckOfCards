@@ -2,9 +2,13 @@
 
 deckOfCards is a Java implementation of a deck of cards and provides functionality to:
 * Shuffle the deck which randomly permutes cards in the deck
-* Deal one card randomly drawn from the deck
+* Deal one card randomly drawn from the deck. After the deck is empty, no more cards will be returned.
 
-This implementation is for a standard deck of playing cards. Support for other types of cards can be added by extending the `Deck` abstract class.
+The following assumptions have been made about expected behavior:
+* Duplicate cards are allowed in a deck
+* Attempting to draw a card from an empty deck should return an exception message indicating deck is empty
+
+The project used an Abstract Factory design pattern to define a generic deck of cards. A concrete implementation has been provided for a standard deck of playing cards. Support for other types can be added by defining a new type of `Card` and extending the `Deck` abstract class.
 
 ## Prerequisites
 

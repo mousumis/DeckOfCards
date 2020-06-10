@@ -50,12 +50,7 @@ public class PlayingCardDeckTest {
     @Test
     public void testCardDealing() {
         // Build a standard deck as control group to check against
-        List<Card> standardDeck = new ArrayList<>();
-        for (Suit suit : Suit.values()) {
-            for (FaceValue faceValue : FaceValue.values()) {
-                standardDeck.add(new PlayingCard(suit, faceValue));
-            }
-        }
+        List<Card> standardDeck = getStandardDeck();
 
         // Create new playing card deck
         PlayingCardDeck deck = new PlayingCardDeck();
@@ -102,6 +97,37 @@ public class PlayingCardDeckTest {
     }
 
     @Test
+    public void testMultipleShuffles() {
+        PlayingCardDeck deck = new PlayingCardDeck();
+        assertEquals("Check that deck has 52 cards as expected", deck.getDeck().size(), deckSize);
+
+        deck.shuffle();
+        deck.shuffle();
+        deck.shuffle();
+        deck.shuffle();
+
+        int currentDeckSize = 52;
+        List<Card> standardDeck = getStandardDeck();
+
+        // Deal cards one at a time and check against standard deck to ensure a unique card is dealt each time
+        for (int i = 0; i < deckSize; i++) {
+            Card dealtCard = deck.dealOneCard();
+            currentDeckSize--;
+
+            assertEquals("Check that deck has expected number of cards", deck.getDeck().size(), currentDeckSize);
+            assertTrue("Card being dealt should not have been dealt before", standardDeck.contains(dealtCard));
+
+            //Remove dealt card from standard deck
+            standardDeck.remove(dealtCard);
+
+            deck.shuffle();
+        }
+
+        assertEquals("Deck should have no cards", deck.getDeck().size(), 0);
+        assertEquals("Standard deck should have no cards", standardDeck.size(), 0);
+    }
+
+    @Test
     public void testEmptyDeck() {
         PlayingCardDeck deck = new PlayingCardDeck();
 
@@ -118,6 +144,16 @@ public class PlayingCardDeckTest {
         deck.shuffle();
         assertTrue("Shuffling an empty deck should have no effect", deck.getDeck().isEmpty());
 
+    }
+
+    private List<Card> getStandardDeck() {
+        List<Card> standardDeck = new ArrayList<>();
+        for (Suit suit : Suit.values()) {
+            for (FaceValue faceValue : FaceValue.values()) {
+                standardDeck.add(new PlayingCard(suit, faceValue));
+            }
+        }
+        return standardDeck;
     }
 
 }
