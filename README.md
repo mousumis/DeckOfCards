@@ -12,11 +12,10 @@ The project uses a Template design pattern to define a generic deck of cards. A 
 
 ## Prerequisites
 
-This project requires a Java Runtime Environment to run.
-Maven is needed is needed for local builds using the provided `pom.xml` configuration
+* To run: [Java Runtime Environment](https://java.com/en/download/) 1.8 or higher
+* To build locally: [Maven](https://maven.apache.org/download.cgi)
 
 ## Build
-
 A `pom.xml` configuration has been provided to build this project in maven:
 ```
 mvn clean package
