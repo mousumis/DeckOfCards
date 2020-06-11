@@ -4,7 +4,6 @@ import com.ms.deckofcards.card.Card;
 import com.ms.deckofcards.card.playingcard.FaceValue;
 import com.ms.deckofcards.card.playingcard.PlayingCard;
 import com.ms.deckofcards.card.playingcard.Suit;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -18,10 +17,10 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 public class PlayingCardDeckTest {
-
-    int deckSize = 52;
-    String standardDeckStr;
     static final String STANDARD_DECK_FILE_PATH = "src/test/resources/StandardPlayingCardDeck.txt";
+    static final int DECK_SIZE = 52;
+
+    String standardDeckStr;
 
     @Before
     public void setUp() {
@@ -41,7 +40,7 @@ public class PlayingCardDeckTest {
         PlayingCardDeck deck = new PlayingCardDeck();
 
         assertNotNull(deck);
-        assertEquals("Check that deck has 52 cards as expected", deck.getDeck().size(), deckSize);
+        assertEquals("Check that deck has 52 cards as expected", deck.getDeck().size(), DECK_SIZE);
         assertEquals("String representation should be correct", deck.toString(), standardDeckStr);
     }
 
@@ -53,11 +52,11 @@ public class PlayingCardDeckTest {
         // Create new playing card deck
         PlayingCardDeck deck = new PlayingCardDeck();
         deck.shuffle();
-        assertEquals("Check that deck has 52 cards as expected", deck.getDeck().size(), deckSize);
-        int currentDeckSize = deckSize;
+        assertEquals("Check that deck has 52 cards as expected", deck.getDeck().size(), DECK_SIZE);
+        int currentDeckSize = DECK_SIZE;
 
         // Deal cards one at a time and check against standard deck to ensure a unique card is dealt each time
-        for (int i = 0; i < deckSize; i++) {
+        for (int i = 0; i < DECK_SIZE; i++) {
             Card dealtCard = deck.dealOneCard();
             currentDeckSize--;
 
@@ -75,7 +74,7 @@ public class PlayingCardDeckTest {
     @Test
     public void testShuffle() {
         PlayingCardDeck deck = new PlayingCardDeck();
-        assertEquals("Check that deck has 52 cards as expected", deck.getDeck().size(), deckSize);
+        assertEquals("Check that deck has 52 cards as expected", deck.getDeck().size(), DECK_SIZE);
 
         List<PlayingCard> initialDeck = deck.getDeck();
         deck.shuffle();
@@ -97,7 +96,7 @@ public class PlayingCardDeckTest {
     @Test
     public void testMultipleShuffles() {
         PlayingCardDeck deck = new PlayingCardDeck();
-        assertEquals("Check that deck has 52 cards as expected", deck.getDeck().size(), deckSize);
+        assertEquals("Check that deck has 52 cards as expected", deck.getDeck().size(), DECK_SIZE);
 
         deck.shuffle();
         deck.shuffle();
@@ -108,7 +107,7 @@ public class PlayingCardDeckTest {
         List<Card> standardDeck = getStandardDeck();
 
         // Deal cards one at a time and check against standard deck to ensure a unique card is dealt each time
-        for (int i = 0; i < deckSize; i++) {
+        for (int i = 0; i < DECK_SIZE; i++) {
             Card dealtCard = deck.dealOneCard();
             currentDeckSize--;
 
@@ -130,7 +129,7 @@ public class PlayingCardDeckTest {
         PlayingCardDeck deck = new PlayingCardDeck();
 
         // Empty all cards from deck
-        for (int i = 0; i < deckSize; i++) {
+        for (int i = 0; i < DECK_SIZE; i++) {
             deck.dealOneCard();
         }
 
