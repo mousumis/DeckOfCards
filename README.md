@@ -1,6 +1,6 @@
 # DeckOfCards
 
-deckOfCards is a Java implementation to represent a deck of cards and provides functionality to:
+DeckOfCards is a Java implementation to represent a deck of cards and provides functionality to:
 * Shuffle the deck which randomly permutes cards in the deck.
 * Deal one card randomly drawn from the deck. After the deck is empty, no more cards will be returned.
 
