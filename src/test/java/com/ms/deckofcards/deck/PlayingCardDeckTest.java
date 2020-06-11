@@ -4,7 +4,6 @@ import com.ms.deckofcards.card.Card;
 import com.ms.deckofcards.card.playingcard.FaceValue;
 import com.ms.deckofcards.card.playingcard.PlayingCard;
 import com.ms.deckofcards.card.playingcard.Suit;
-import com.ms.deckofcards.exceptions.EmptyDeckException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,7 +14,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
 import static org.junit.Assert.*;
 
@@ -136,10 +134,8 @@ public class PlayingCardDeckTest {
             deck.dealOneCard();
         }
 
-        // Attempting to draw from an empty deck should throw an error
-        EmptyDeckException e = Assert.assertThrows(EmptyDeckException.class, deck::dealOneCard);
-        assertEquals("Correct error message should be returned", e.getMessage(), "No cards left in deck to deal");
-        assertTrue("Deck should be empty", deck.getDeck().isEmpty());
+        // Attempting to draw from an empty deck should return null
+        assertNull("Trying to deal from empty deck will not return a card", deck.dealOneCard());
 
         deck.shuffle();
         assertTrue("Shuffling an empty deck should have no effect", deck.getDeck().isEmpty());

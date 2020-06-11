@@ -1,5 +1,6 @@
 package com.ms.deckofcards;
 
+import com.ms.deckofcards.card.Card;
 import com.ms.deckofcards.deck.PlayingCardDeck;
 
 /**
@@ -35,6 +36,10 @@ public class DeckOfCards {
         System.out.println("Deck is now empty. Size of deck: " + deck.getDeck().size());
 
         // Trying to deal from empty deck will result in an empty deck exception message displayed
-        deck.dealOneCard();
+        Card dealtCard = deck.dealOneCard();
+        if (dealtCard == null)
+        {
+            System.out.println("Attempting to deal from empty deck. No card was returned.");
+        }
     }
 }

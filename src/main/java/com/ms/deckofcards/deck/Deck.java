@@ -1,6 +1,5 @@
 package com.ms.deckofcards.deck;
 
-import com.ms.deckofcards.exceptions.EmptyDeckException;
 import com.ms.deckofcards.card.Card;
 
 import java.util.List;
@@ -52,7 +51,7 @@ public abstract class Deck<T extends Card> {
             return cardRemoved;
         }
         else {
-            throw new EmptyDeckException("No cards left in deck to deal");
+            return null;
         }
     }
 
