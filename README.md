@@ -12,7 +12,7 @@ The project uses a Template design pattern to define a generic deck of cards. A 
 
 ## Prerequisites
 
-* To run: [Java Runtime Environment](https://java.com/en/download/) 1.8 or higher
+* To run: [Java](https://java.com/en/download/) 8 or higher
 * To build locally: [Maven](https://maven.apache.org/download.cgi)
 
 ## Build
